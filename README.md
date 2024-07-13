@@ -21,6 +21,7 @@ else
 fi;
 config checkout
 config config status.showUntrackedFiles no
+./scripts/install.sh
 ```
 
 ## Usage
