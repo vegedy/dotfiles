@@ -16,6 +16,10 @@ sudo pacman -S llvm llvm-libs lua-language-server ccl typescript-language-server
 echo "### Installing fonts"
 sudo pacman -S ttf-font-awesome otf-font-awesome ttf-firacode-nerd --noconfirm || exit 1
 
+# Install starship
+echo "### Installing starship"
+sudo pacman -S starship
+
 # Install doom emacs
 echo "### Installing doom emacs"
 sudo pacman -S emacs --noconfirm || exit 1
@@ -43,7 +47,21 @@ fi
 echo "### Installing picom (jonaburg fork)"
 yay -S picom-jonaburg-git
 
-# Install starship
-echo "### Installing starship"
-sudo pacman -S starship
+# Install dwm
+echo "### Installing dwm"
+if [ ! -d $HOME/.build/dwm ]; then
+	cd ~/.build || exit 1
+	git clone git@github.com:vegedy/dwm.git || exit 1
+	cd dwm || exit 1
+	./rebuild.sh || exit 1
+fi
+
+# Install dwmblocks
+echo "### Installing dwmblocks"
+if [ ! -d $HOME/.build/dwmblocks ]; then
+	cd ~/.build || exit 1
+	git clone git@github.com:vegedy/dwmblocks.git || exit 1
+	cd dwmblocks || exit 1
+	./rebuild.sh || exit 1
+fi
 
