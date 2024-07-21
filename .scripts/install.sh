@@ -1,8 +1,12 @@
 #!/usr/bin/env sh
 
+# Install xorg
+echo "### Installing utilities"
+sudo pacman -S xorg xorg-xev xorg-xinit --noconfirm || exit 1
+
 # Install utils
 echo "### Installing utilities"
-sudo pacman -S git man pacman-contrib arandr vim neovim htop neofetch dmenu ranger nitrogen dunst telegram-desktop xorg-xev spectacle mpv feh nodejs npm unzip ripgrep fd --noconfirm || exit 1
+sudo pacman -S git man pacman-contrib arandr vim neovim htop neofetch dmenu ranger nitrogen dunst telegram-desktop spectacle mpv feh nodejs npm unzip ripgrep fd --noconfirm || exit 1
 
 # Install utils
 echo "### Installing language servers"
