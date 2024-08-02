@@ -12,11 +12,6 @@ alias vim=/usr/bin/nvim
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 PS1='[\u@\h \W]\$ '
 
-# Functions
-set-bg() {
-  $HOME/.scripts/set-bg.sh $@
-}
-
 # Starship prompt
 eval "$(starship init bash)"
 
