@@ -29,5 +29,5 @@ function yy() {
 eval "$(starship init bash)"
 
 # Greeting
-neofetch
+fastfetch
 
