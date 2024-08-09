@@ -5,6 +5,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Load environment variables
+export $(envsubst < .env)
+
 # Aliases
 alias ls='ls --color=auto'
 alias ll='ls --color=auto -al'
