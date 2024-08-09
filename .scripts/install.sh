@@ -6,7 +6,7 @@ sudo pacman -S xorg xorg-xev xorg-xinit --noconfirm || exit 1
 
 # Install utils
 echo "### Installing utilities"
-sudo pacman -S git man pacman-contrib arandr vim neovim htop neofetch dmenu ranger nitrogen dunst telegram-desktop spectacle mpv feh nodejs npm unzip ripgrep fd xclip python-pywal --noconfirm || exit 1
+sudo pacman -S git man base-devel pacman-contrib arandr vim neovim htop neofetch dmenu ranger nitrogen dunst telegram-desktop spectacle mpv feh nodejs npm unzip ripgrep fd xclip python-pywal --noconfirm || exit 1
 
 # Install utils
 echo "### Installing language servers"
@@ -15,6 +15,10 @@ sudo pacman -S llvm llvm-libs lua-language-server ccl typescript-language-server
 # Install fonts
 echo "### Installing fonts"
 sudo pacman -S fontconfig ttf-font-awesome otf-font-awesome ttf-firacode-nerd --noconfirm || exit 1
+
+# Install yazi
+echo "### Installing yazi"
+sudo pacman -S yazi ffmpegthumbnailer unarchiver jq poppler fd ripgrep fzf zoxide chafa p7zip --noconfirm || exit 1
 
 # Install starship
 echo "### Installing starship"
@@ -43,9 +47,13 @@ if [ ! -d $HOME/.build/yay ]; then
 	makepkg -si --noconfirm || exit 1
 fi
 
+# Install ueberzugpp
+echo "### Installing ueberzugpp"
+yay -S --noconfirm --needed ueberzugpp
+
 # Install picom (jonaburg fork)
 echo "### Installing picom (jonaburg fork)"
-yay -S picom-jonaburg-git
+yay -S --noconfirm --needed picom-jonaburg-git
 
 # Install dwm
 echo "### Installing dwm"
