@@ -82,3 +82,8 @@ if [ ! -d $HOME/.build/st ]; then
   sudo make install || exit 1
 fi
 
+# Setup language
+echo "### Setup language"
+sudo sed -i '/^#de_DE.UTF-8 UTF-8/s/^#//' /etc/locale.gen # Enable de_DE.UTF-8 UTF-8
+sudo locale-gen
+
