@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+WALLPAPER_DIR=$HOME/Pictures/wallpapers/
+
+if [ -z "$1" ]; then
+  selected=$(ls $WALLPAPER_DIR | dmenu -i -l 10 -p "Select wallpaper:")
+  [ "$selected" == "" ] && notify-send "Aborting" "No wallpaper selected" && exit 1
+  wallpaper=$WALLPAPER_DIR$selected
+else
+  wallpaper=$1
+fi
+
+wal -i $wallpaper
+
+cd $HOME/.build/dwm/
+$TERMINAL sudo ./rebuild.sh
+
+choice=$(echo -e "y\nn" | dmenu -i -p "DWM neu starten? (y/n)")
+if [ "$choice" == "y" ]; then
+  killall dwm
+fi
+
