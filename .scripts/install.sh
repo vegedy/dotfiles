@@ -10,7 +10,7 @@ sudo pacman -S git man base-devel pacman-contrib arandr vim neovim htop fastfetc
 
 # Install utils
 echo "### Installing language servers"
-sudo pacman -S llvm llvm-libs lua-language-server ccl typescript-language-server bash-language-server --noconfirm || exit 1
+sudo pacman -S llvm llvm-libs lua-language-server ccls typescript-language-server bash-language-server --noconfirm || exit 1
 
 # Install fonts
 echo "### Installing fonts"
@@ -23,14 +23,6 @@ sudo pacman -S yazi ffmpegthumbnailer unarchiver jq poppler fd ripgrep fzf zoxid
 # Install starship
 echo "### Installing starship"
 sudo pacman -S starship
-
-# Install doom emacs
-echo "### Installing doom emacs"
-sudo pacman -S emacs --noconfirm || exit 1
-if [ ! -d $HOME/.emacs.d/bin ]; then
-	git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d || exit 1
-	~/.emacs.d/bin/doom install || exit 1
-fi
 
 # Setup build directory
 echo "### Setup build directory"
@@ -59,7 +51,7 @@ yay -S --noconfirm --needed picom-jonaburg-git
 echo "### Installing dwm"
 if [ ! -d $HOME/.build/dwm ]; then
 	cd ~/.build || exit 1
-	git clone git@github.com:vegedy/dwm.git || exit 1
+	git clone https://github.com/vegedy/dwm.git || exit 1
 	cd dwm || exit 1
 	./rebuild.sh || exit 1
 fi
@@ -68,7 +60,7 @@ fi
 echo "### Installing dwmblocks"
 if [ ! -d $HOME/.build/dwmblocks ]; then
 	cd ~/.build || exit 1
-	git clone git@github.com:vegedy/dwmblocks.git || exit 1
+	git clone https://github.com/vegedy/dwmblocks.git || exit 1
 	cd dwmblocks || exit 1
 	./rebuild.sh || exit 1
 fi
