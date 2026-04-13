@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+WG_CONFIG=/etc/wireguard/wgnet0.conf
+
+wg-quick down $WG_CONFIG
+
+/usr/local/bin/sigdwmblocks 5
+
