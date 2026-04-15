@@ -47,6 +47,10 @@ yay -S --noconfirm --needed ueberzugpp
 echo "### Installing picom (jonaburg fork)"
 yay -S --noconfirm --needed picom-jonaburg-git
 
+# Install i3lock-fancy-dualmonitors
+echo "### Installing picom (jonaburg fork)"
+yay -S --noconfirm --needed i3lock-fancy-dualmonitors-git
+
 # Install dwm
 echo "### Installing dwm"
 if [ ! -d $HOME/.build/dwm ]; then
