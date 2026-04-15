@@ -2,7 +2,5 @@
 
 WG_CONFIG=/etc/wireguard/wgnet0.conf
 
-wg-quick up $WG_CONFIG
-
-/usr/local/bin/sigdwmblocks 5
+st -e wg-quick up $WG_CONFIG && /usr/local/bin/sigdwmblocks 5
 
