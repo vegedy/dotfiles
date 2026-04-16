@@ -73,7 +73,7 @@ fi
 echo "### Installing st"
 if [ ! -d $HOME/.build/st ]; then
 	cd ~/.build || exit 1
-  git clone https://github.com/LukeSmithxyz/st || exit 1
+  git clone https://github.com/vegedy/st.git || exit 1
   cd st || exit 1
   sudo make install || exit 1
 fi
