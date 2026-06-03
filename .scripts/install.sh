@@ -6,7 +6,7 @@ sudo pacman -S xorg xorg-xev xorg-xinit --noconfirm || exit 1
 
 # Install utils
 echo "### Installing utilities"
-sudo pacman -S git man base-devel pacman-contrib arandr vim neovim htop fastfetch dmenu ranger nitrogen dunst telegram-desktop spectacle mpv feh nodejs npm unzip ripgrep fd xclip python-pywal zathura zathura-pdf-mupdf pamixer --noconfirm || exit 1
+sudo pacman -S git man base-devel pacman-contrib arandr vim neovim htop fastfetch dmenu ranger nitrogen dunst telegram-desktop spectacle mpv feh nodejs npm unzip ripgrep fd xclip python-pywal zathura zathura-pdf-mupdf pamixer rsync openssh --noconfirm || exit 1
 
 # Install utils
 echo "### Installing language servers"
