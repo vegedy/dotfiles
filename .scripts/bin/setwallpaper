@@ -1,22 +1,32 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-WALLPAPER_DIR=$HOME/Pictures/wallpapers/
+WALLPAPER_DIR="${HOME}/Pictures/wallpapers"
+WAL_DIR="${HOME}/.cache/wal"
+DWM_SCRIPT="${HOME}/.build/dwm/scripts/generate-dwm-xresources.sh"
 
-if [ -z "$1" ]; then
-  selected=$(ls $WALLPAPER_DIR | dmenu -l 10 -p "Select wallpaper:")
-  [ "$selected" == "" ] && notify-send "Aborting" "No wallpaper selected" && exit 1
-  wallpaper=$WALLPAPER_DIR$selected
+if [[ $# -eq 0 ]]; then
+    selected=$(
+        find "$WALLPAPER_DIR" -maxdepth 1 -type f -printf '%f\n' |
+            sort |
+            dmenu -l 10 -p "Select wallpaper:"
+    )
+
+    [[ -z "$selected" ]] && exit 0
+    wallpaper="${WALLPAPER_DIR}/${selected}"
 else
-  wallpaper=$1
+    wallpaper="$1"
 fi
 
-wal -i $wallpaper
+[[ -f "$wallpaper" ]] || {
+    notify-send "Wallpaper" "Nicht gefunden: $wallpaper"
+    exit 1
+}
 
-cd $HOME/.build/dwm/
-$TERMINAL sudo ./rebuild.sh
+wal -i "$wallpaper"
 
-choice=$(echo -e "y\nn" | dmenu -p "DWM neu starten? (y/n)")
-if [ "$choice" == "y" ]; then
-  killall dwm
-fi
+"$DWM_SCRIPT"
+
+xrdb -merge "${WAL_DIR}/colors.Xresources"
+xrdb -merge "${WAL_DIR}/dwm.Xresources"
 
