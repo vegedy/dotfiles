@@ -23,6 +23,13 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
+# Letzte pywal-Palette und die daraus abgeleiteten dwm-Farben laden.
+[ -r "$HOME/.cache/wal/colors.Xresources" ] &&
+    xrdb -merge "$HOME/.cache/wal/colors.Xresources"
+
+[ -r "$HOME/.cache/wal/dwm.Xresources" ] &&
+    xrdb -merge "$HOME/.cache/wal/dwm.Xresources"
+
 # start some nice programs
 
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then

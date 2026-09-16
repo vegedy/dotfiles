@@ -30,3 +30,6 @@ wal -i "$wallpaper"
 xrdb -merge "${WAL_DIR}/colors.Xresources"
 xrdb -merge "${WAL_DIR}/dwm.Xresources"
 
+# Signal dwm to update xrdb
+xsetroot -name "fsignal:1"
+
