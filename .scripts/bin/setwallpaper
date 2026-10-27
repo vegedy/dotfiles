@@ -33,3 +33,6 @@ xrdb -merge "${WAL_DIR}/dwm.Xresources"
 # Signal dwm to update xrdb
 xsetroot -name "fsignal:1"
 
+# Signal kitty to update xrdb
+pkill -USR1 -x kitty || true
+
