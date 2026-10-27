@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SRC_ROOT="$HOME/workspace"
+WIN_HOST="bzenz@192.168.178.51"
+WIN_ROOT="/cygdrive/c/Workspace"
+
+if [[ $# -lt 1 ]]; then
+  echo "Usage: ws-upload <relativer-pfad-im-workspace>"
+  echo "Beispiel: ws-upload AndroidStudioProjects/VisitenhelferAndroid"
+  exit 1
+fi
+
+REL_PATH="${1#/}"
+SRC_PATH="$SRC_ROOT/$REL_PATH"
+DEST_PATH="$WIN_ROOT/$REL_PATH"
+
+if [[ ! -e "$SRC_PATH" ]]; then
+  echo "Quelle existiert nicht: $SRC_PATH"
+  exit 1
+fi
+
+rsync -avz --delete --progress \
+  "$SRC_PATH" \
+  "$WIN_HOST:$DEST_PATH"
+
